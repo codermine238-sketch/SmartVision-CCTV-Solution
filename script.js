@@ -1,48 +1,92 @@
-// 🔥 Get Free Quote button (scroll to contact section)
-document.getElementById("quoteBtn").addEventListener("click", function () {
-  document.getElementById("contact").scrollIntoView({
-    behavior: "smooth"
-  });
-});
+document.addEventListener("DOMContentLoaded", function () {
 
+  // =========================
+  // SAFE GET
+  // =========================
+  const get = (id) => document.getElementById(id);
 
-// 🔥 WhatsApp Form Send
-document.getElementById("sendQuoteBtn").addEventListener("click", function () {
+  const contact = get("contact");
+  const quoteBtn = get("quoteBtn");
 
-  let name = document.getElementById("name").value;
-  let phone = document.getElementById("phone").value;
-  let location = document.getElementById("location").value;
-  let details = document.getElementById("details").value;
-
-  if (!name || !phone) {
-    alert("Please fill name and phone number!");
-    return;
+  // =========================
+  // SMOOTH SCROLL FUNCTION
+  // =========================
+  function scrollToEl(el) {
+    if (!el) return;
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   }
 
-  let message = 
+  // =========================
+  // HERO BUTTON FIX
+  // =========================
+  if (quoteBtn) {
+    quoteBtn.addEventListener("click", function () {
+      scrollToEl(contact);
+    });
+  }
+
+  // =========================
+  // NAV LINKS FIX
+  // =========================
+  document.querySelectorAll("a[href='#contact']").forEach(a => {
+    a.addEventListener("click", function (e) {
+      e.preventDefault();
+      scrollToEl(contact);
+    });
+  });
+
+  // =========================
+  // ALL INTERNAL LINKS SMOOTH
+  // =========================
+  document.querySelectorAll("a[href^='#']").forEach(link => {
+    link.addEventListener("click", function (e) {
+
+      const id = this.getAttribute("href").replace("#", "");
+      const el = document.getElementById(id);
+
+      if (el) {
+        e.preventDefault();
+        scrollToEl(el);
+      }
+
+    });
+  });
+
+  // =========================
+  // WHATSAPP FORM FIX
+  // =========================
+  const sendBtn = get("sendQuoteBtn");
+
+  if (sendBtn) {
+    sendBtn.addEventListener("click", function () {
+
+      const name = get("name")?.value.trim();
+      const phone = get("phone")?.value.trim();
+      const location = get("location")?.value.trim();
+      const details = get("details")?.value.trim();
+
+      if (!name || !phone) {
+        alert("Please enter Name and Phone!");
+        return;
+      }
+
+      const message =
 `Hello SmartVision CCTV 👋
-I want a free quote:
+Free Quote Request:
 
 Name: ${name}
 Phone: ${phone}
-City: ${location}
-Details: ${details}`;
+City: ${location || "Not provided"}
+Message: ${details || "No details"}`;
 
-  let whatsappURL = "https://wa.me/923019800296?text=" + encodeURIComponent(message);
+      const url = "https://wa.me/923019800296?text=" + encodeURIComponent(message);
 
-  window.open(whatsappURL, "_blank");
-});
-document.querySelectorAll("a[href^='#']").forEach(link => {
-  link.addEventListener("click", function(e) {
-    e.preventDefault();
+      window.open(url, "_blank");
 
-    const target = document.querySelector(this.getAttribute("href"));
+    });
+  }
 
-    if (target) {
-      target.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-    }
-  });
 });
