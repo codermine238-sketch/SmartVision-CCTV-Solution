@@ -130,7 +130,7 @@ button:hover{
   background-position:top;
   background-repeat:no-repeat;
   min-height:700px;
-  background-color:rgb(212, 193, 193);
+  background-color:rgb(0, 0, 0);
 }
 
 .services h2{
@@ -211,7 +211,7 @@ button:hover{
 /* LEFT SIDE */
 .contact-left{
   flex:1;
-  color:#fff;
+  color:#ffffff;
 }
 
 .contact-left h2{
@@ -262,7 +262,7 @@ button:hover{
   border:1px solid rgba(255,0,0,0.3);
   border-radius:10px;
 
-  color:#fff;
+  color:#000000;
   caret-color:var(--red);
 }
 
@@ -276,7 +276,7 @@ button:hover{
   padding:14px;
   font-size:16px;
   background:linear-gradient(45deg,#ff0000,#990000);
-  color:#fff;
+  color:#000000;
   border:none;
   border-radius:10px;
   cursor:pointer;
@@ -290,25 +290,22 @@ button:hover{
 /* FOCUS */
 input:focus,
 textarea:focus{
-  outline:none;
-  border-color:var(--red);
-  box-shadow:0 0 20px rgba(255,0,0,0.4);
-  transform:scale(1.02);
+  outline: none;
+  border-color: var(--red);
+  box-shadow: 0 0 20px rgba(255,0,0,0.4);
+  transform: scale(1.02);
 }
 
-/* DEFAULT PLACEHOLDER TEXT */
 input::placeholder,
 textarea::placeholder{
-  color:#000000;           /* 🔥 default hint text change */
-  opacity:1;
+  color: rgba(66, 66, 66, 0.7);
+  opacity: 1;
 }
 
-/* TEXTAREA SIZE */
 textarea{
-  min-height:160px;
-  resize:none;
+  min-height: 160px;
+  resize: none;
 }
-
 /* FOOTER */
 footer{
   text-align:center;
@@ -350,17 +347,118 @@ footer{
 }
 
 /* RESPONSIVE */
-@media(max-width:768px){
-  header{ padding:15px 20px; }
+@media (max-width: 768px){
 
-  .hero h2{ font-size:28px; }
+  /* GLOBAL SAFE FIX */
+  body{
+    overflow-x:hidden;
+  }
 
-  .services, .why, .contact{
-    padding:50px 20px;
+  section{
+    padding:50px 20px !important;
+    text-align:center;
+  }
+
+  /* HEADER */
+ @media (max-width: 768px){
+
+  @media (max-width: 768px){
+
+  header{
+    padding:10px 12px;
+    flex-direction:row;
+    align-items:center;
+  }
+
+  .logo-area h1{
+    font-size:16px;
+    letter-spacing:0.5px;
+  }
+
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:6px;
+  }
+
+  nav a{
+    font-size:12px;
+    margin-left:6px;
+    padding:2px 4px;
+    white-space:nowrap;
+  }
+
+}
+  /* HERO */
+  .hero h2{
+    font-size:26px;
+  }
+
+  .hero p{
+    font-size:14px;
+  }
+
+  /* SERVICES */
+  .service-grid{
+    flex-direction:column;
+    align-items:center;
   }
 
   .service{
-    width:100%;
-    max-width:300px;
+    width:90%;
+    max-width:320px;
   }
+ .services{
+    background-size:100% 20%;
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+
+}
+  /* WHY SECTION */
+  .why h2{
+    font-size:28px;
+  }
+
+  .why p{
+    font-size:15px;
+  }
+
+  /* CONTACT */
+  .contact{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .contact-left,
+  .contact-right{
+    width:100%;
+  }
+
+  /* INPUTS */
+  .contact-right input,
+  .contact-right textarea{
+    width:100%;
+  }
+
+  /* 🔥 QUOTE / TESTIMONIAL SECTION FIX */
+  .quote,
+  .quotes,
+  .testimonial,
+  .testimonial-section{
+    display:flex;
+    flex-direction:column !important;
+    align-items:center;
+    text-align:center;
+    gap:20px;
+  }
+
+  .quote-box,
+  .quote-item,
+  .testimonial-box{
+    width:90%;
+    max-width:320px;
+  }
+
 }
