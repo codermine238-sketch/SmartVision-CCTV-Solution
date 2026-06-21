@@ -25,7 +25,7 @@
 
 <header>
   <div class="logo-area">
-    <h1>SmartVision CCTV Solution</h1>
+    <h1>SmartVision CCTV</h1>
   </div>
 
   <nav>
@@ -54,7 +54,7 @@
     <h2>CCTV Camera Installation Experts in Pakistan</h2>
     <p>HD | IP | Wireless Security Camera Systems for Homes & Offices</p>
     <p>4-8 Camera Packages with Installation |Call Now: 0301-9800296</p>
-    <button id="quoteBtn">Get Free Quote</button>
+<button type="button" id="quoteBtn">Get Free Quote</button>
    
         <a href="tel:03019800296" class="call-btn">Call </a>
     
@@ -124,7 +124,7 @@
 
 <!-- CONTACT -->
  
-<section class="contact">
+<section id="contact" class="contact">
 
   <div class="contact-left">
     <h2>Get In Touch</h2>
@@ -142,12 +142,14 @@
     </div>
   </div>
 
-  <div class="contact-right">
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Your Message"></textarea>
-    <button>Send Message</button>
-  </div>
+<div class="contact-right">
+  <input id="name" type="text" placeholder="Your Name">
+  <input id="phone" type="text" placeholder="Your Phone">
+  <input id="location" type="text" placeholder="Your City">
+  <textarea id="details" placeholder="Your Message"></textarea>
+
+ <button type="button" id="sendQuoteBtn">Send Message</button>
+</div>
 
 </section>
 
@@ -155,7 +157,7 @@
   <p>Email: smartvisioncctvsolution@gmail.com</p>
   <p>Phone: 0301-9800296</p>
   <p>Location: Shop no B-5,Basement,Dulex Plaza, D.A.V Collage Road, Rawalpindi</p>
-  <p>© 2026 SmartVision CCTV Solution</p>
+  <p>© <span id="year"></span> SmartVision CCTV Solution</p>
     <a href="privacy.html">Privacy Policy</a> |
   <a href="terms.html">Terms & Conditions</a>
  </footer>
